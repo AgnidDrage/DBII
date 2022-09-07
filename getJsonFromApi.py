@@ -21,13 +21,14 @@ def requestData(keys, titleId):
     else:
         index = 0
     titleData = []
-    key = keys[3]
-    for i in range(1000):
-        id = titleId[index]
-        data = requests.get("http://www.omdbapi.com/?apikey="+key+"&i="+id)
-        print(data)
-        titleData.append(data.json())
-        index += 1
+    #key = keys[3]
+    for key in keys:
+        for i in range(1000):
+            id = titleId[index]
+            data = requests.get("http://www.omdbapi.com/?apikey="+key+"&i="+id)
+            print(data)
+            titleData.append(data.json())
+            index += 1
     print("New last index: " + str(index))
     saveLastIndex(index)
     return titleData

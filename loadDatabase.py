@@ -11,8 +11,6 @@ def main():
     for title in data:
         uploadToDB(formatData(title), col)
 
-
-
 def getData(path):
     with open(path, 'r') as fd:
         data = json.load(fd)

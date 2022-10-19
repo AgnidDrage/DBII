@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "634edec90bd05b28e810d3e2"
+  },
+  "name": "Documentary"
+},{
+  "_id": {
+    "$oid": "634edec90bd05b28e810d3e3"
+  },
+  "name": "Short"
+},{
+  "_id": {
+    "$oid": "634edec90bd05b28e810d3e5"
+  },
+  "name": "Animation"
+},{
+  "_id": {
+    "$oid": "634eded00bd05b28e810d3e7"
+  },
+  "name": "Comedy"
+},{
+  "_id": {
+    "$oid": "634edee30bd05b28e810d3ec"
+  },
+  "name": "Sport"
+},{
+  "_id": {
+    "$oid": "634edeea0bd05b28e810d3ef"
+  },
+  "name": "Romance"
+},{
+  "_id": {
+    "$oid": "634edf210bd05b28e810d3fe"
+  },
+  "name": "News"
+},{
+  "_id": {
+    "$oid": "634edf530bd05b28e810d40b"
+  },
+  "name": "Drama"
+},{
+  "_id": {
+    "$oid": "634edfe80bd05b28e810d430"
+  },
+  "name": "Fantasy"
+},{
+  "_id": {
+    "$oid": "634ee0150bd05b28e810d439"
+  },
+  "name": "Horror"
+},{
+  "_id": {
+    "$oid": "634ee15b0bd05b28e810d47b"
+  },
+  "name": "Biography"
+},{
+  "_id": {
+    "$oid": "634ee1680bd05b28e810d480"
+  },
+  "name": "Music"
+},{
+  "_id": {
+    "$oid": "634ee23b0bd05b28e810d4b8"
+  },
+  "name": "War"
+},{
+  "_id": {
+    "$oid": "634ee2570bd05b28e810d4c1"
+  },
+  "name": "Crime"
+},{
+  "_id": {
+    "$oid": "634ee2780bd05b28e810d4cb"
+  },
+  "name": "Western"
+},{
+  "_id": {
+    "$oid": "634ee3640bd05b28e810d4fb"
+  },
+  "name": "Family"
+},{
+  "_id": {
+    "$oid": "634ee3b50bd05b28e810d50a"
+  },
+  "name": "Adventure"
+},{
+  "_id": {
+    "$oid": "634ee4a10bd05b28e810d538"
+  },
+  "name": "Action"
+},{
+  "_id": {
+    "$oid": "634ee6830bd05b28e810d5a1"
+  },
+  "name": "History"
+},{
+  "_id": {
+    "$oid": "634ee9f00bd05b28e810d66e"
+  },
+  "name": "N/A"
+},{
+  "_id": {
+    "$oid": "634eee000bd05b28e810d835"
+  },
+  "name": "Sci-Fi"
+},{
+  "_id": {
+    "$oid": "634eee000bd05b28e810d837"
+  },
+  "name": "Mystery"
+},{
+  "_id": {
+    "$oid": "634ef2dc0bd05b28e810db3e"
+  },
+  "name": "Thriller"
+},{
+  "_id": {
+    "$oid": "634ef36a0bd05b28e810db9c"
+  },
+  "name": "Musical"
+}]

@@ -15,6 +15,37 @@ def relative_to_assets(path: str) -> Path:
 def show_info():
     messagebox.showinfo('FAQ', 'Project made for BDII\n\n Members:\n  > Mariano Sanchez Toledo\n  > Agustín Montaña\n  > Bruno Orbelli\n  > Mauro Sarmiento\n\n 2022')
 
+def generate_table():
+    table0 = [] # La tabla table0 se conserva para control
+
+    for i in tv.get_children(): # Reinicia los datos de la tabla despues de cada envio de datos
+        tv.delete(i)
+    for i in range(0):
+        table0.append()
+        tv.insert('',END,text=str(i),values=()) # Se insertan los datos de la tabla de resultados en la primer tabla
+
+    len_cols = len() # Cantidad de columnas
+    cols = []
+
+    for i in range(len_cols): # Agrega la cantidad de columnas a una lista cols que les asigna un ID a cada columna
+        cols.append(i)
+    cols.pop()
+
+    tv2 = ttk.Treeview(window,columns=cols,height=8) # Agrega las columnas reconocidas a la tabla en forma dinamica
+    tv2.column('#0', width=80) # Se le asigna formato a la primer columna
+    for i in range(len(cols)): # Se les asigna formato al resto de columnas
+        tv2.column(i, width=80)
+    tv2.place(x=50,y=750) # Se posiciona la tercer tabla
+
+    values_gen = [] # Lista de valores a posicionar en la tabla
+
+    for i in range()): # Se rellenan los datos de la tabla
+        for l in range(len(cols)):
+            values_gen.append()
+        tv2.insert('',i, text='' ,values=values_gen)
+        for j in range(len(cols)):
+            values_gen.pop()
+
 window = ThemedTk(theme='breeze')
 
 window.geometry("1280x720")
@@ -65,7 +96,7 @@ combo = ttk.Combobox(
     justify='center',
     font=('Nunito', 12),
 )
-combo.set("Filter")
+combo.set("Pelicula")
 combo.place(
     x=50, 
     y=103,

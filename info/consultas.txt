@@ -1,0 +1,32 @@
+
+
+--Crear indice de tipo texto en campo title--
+db.films.createIndex({
+    title: "text"
+})
+
+--Indice decendente en rating--
+db.films.createIndex({rating: -1})
+
+
+--Consultar rating entre 3 y 4--
+db.films.find({"rating":{"$gte":3,"$lte":4}})
+$gte es mayor o igual que...
+$lte es menor o igual que...
+
+db.films.find({"rating":{"$gt":3,"$lt":4}})
+$gte es mayor que...
+$lte es menos que...
+
+db.films.find({"rating":{"$ne":4}})
+$ne es distinto que...
+
+--Consulta anidada traer todo director al buscar film--
+db.films.aggregate([{ $lookup: { from: 'directors', localField: 'director', foreignField: '_id', as: 'director'} }])
+
+--Consulta anidada traer solo NOMBRE director al buscar film--
+db.films.aggregate([{ $lookup: { from: 'directors', localField: 'director', foreignField: '_id', as: 'director'}}, { $unwind: '$director'}, { $unset: ['director._id', 'director.birthYear', 'director.deathYear', 'director.primaryProfession', 'director.titles']} ])
+
+--Consulta anidada traer solo ID y NOMBRE director al buscar film--
+db.films.aggregate([{ $lookup: { from: 'directors', localField: 'director', foreignField: '_id', as: 'director'}}, { $unwind: '$director'}, { $unset: ['director.birthYear', 'director.deathYear', 'director.primaryProfession', 'director.titles']} ])
+

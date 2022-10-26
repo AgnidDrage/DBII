@@ -1,0 +1,4 @@
+- Consulta anidadas
+- Interfaz
+- Medir rendimiento
+- Backend

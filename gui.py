@@ -124,5 +124,34 @@ button_2.place(
     width=159.0,
     height=41.0
 )
+
+# Creación Treeview
+tree_frame = Frame(window)
+tree_frame.place(x = 120, y= 165)
+tree_frame.config(bg='white')
+
+tree_scroll = Scrollbar(tree_frame)
+tree_scroll.pack(side=RIGHT, fill=Y)
+
+tv = ttk.Treeview(tree_frame, columns=('tittle', 'released', 'runtime', 'genre', 'director'), height= 23, yscrollcommand=tree_scroll.set)
+
+tv.column('#0', width=0, stretch=NO)
+tv.column('tittle', width=250, minwidth=200,anchor=CENTER)
+tv.column('released', width=170, minwidth=150,anchor=CENTER)
+tv.column('runtime', width=170, minwidth=100,anchor=CENTER)
+tv.column('genre', width=180, minwidth=100,anchor=CENTER)
+tv.column('director', width=230, minwidth=200,anchor=CENTER)
+
+tv.heading('#0', text='', anchor=CENTER)
+tv.heading('tittle',text='Tittle', anchor=CENTER)
+tv.heading('released',text='Released', anchor=CENTER)
+tv.heading('runtime',text='Runtime', anchor=CENTER)
+tv.heading('genre',text='Genre', anchor=CENTER)
+tv.heading('director',text='Director', anchor=CENTER)
+
+tv.pack()
+
+tree_scroll.config(command=tv.yview)
+
 window.resizable(False, False)
 window.mainloop()

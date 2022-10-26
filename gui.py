@@ -39,7 +39,7 @@ def generate_table():
 
     values_gen = [] # Lista de valores a posicionar en la tabla
 
-    for i in range()): # Se rellenan los datos de la tabla
+    for i in range(): # Se rellenan los datos de la tabla
         for l in range(len(cols)):
             values_gen.append()
         tv2.insert('',i, text='' ,values=values_gen)

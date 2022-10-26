@@ -57,5 +57,3 @@ def searchGenreArray(arrayId):
 
 if __name__ == "__main__":
     print(searchTitle("Clown"))
-    test = [[], [], [], [], [], []]
-    print(len(test))

@@ -46,6 +46,16 @@ def generate_table():
         for j in range(len(cols)):
             values_gen.pop()
 
+def gen_tittle(dataList):
+    for i in tv.get_children():
+            tv.delete(i)
+        
+    count = 0
+        
+    for row in dataList:
+        tv.insert(parent='', index='end', iid=count, text ='', values=(row[0], row[1], row[2], row[3], row[4], row[5]))
+        count += 1
+
 window = ThemedTk(theme='breeze')
 
 window.geometry("1280x720")
@@ -146,7 +156,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: gen_tittles(),
     relief="flat"
 )
 button_2.place(
@@ -164,14 +174,15 @@ tree_frame.config(bg='white')
 tree_scroll = Scrollbar(tree_frame)
 tree_scroll.pack(side=RIGHT, fill=Y)
 
-tv = ttk.Treeview(tree_frame, columns=('tittle', 'released', 'runtime', 'genre', 'director'), height= 23, yscrollcommand=tree_scroll.set)
+tv = ttk.Treeview(tree_frame, columns=('tittle', 'released', 'runtime', 'genre', 'director', 'rating'), height= 23, yscrollcommand=tree_scroll.set)
 
 tv.column('#0', width=0, stretch=NO)
-tv.column('tittle', width=250, minwidth=200,anchor=CENTER)
-tv.column('released', width=170, minwidth=150,anchor=CENTER)
-tv.column('runtime', width=170, minwidth=100,anchor=CENTER)
-tv.column('genre', width=180, minwidth=100,anchor=CENTER)
-tv.column('director', width=230, minwidth=200,anchor=CENTER)
+tv.column('tittle', width=230, minwidth=200,anchor=CENTER)
+tv.column('released', width=150, minwidth=150,anchor=CENTER)
+tv.column('runtime', width=150, minwidth=100,anchor=CENTER)
+tv.column('genre', width=160, minwidth=100,anchor=CENTER)
+tv.column('director', width=220, minwidth=200,anchor=CENTER)
+tv.column('rating', width=90, minwidth=80,anchor=CENTER)
 
 tv.heading('#0', text='', anchor=CENTER)
 tv.heading('tittle',text='Tittle', anchor=CENTER)
@@ -179,6 +190,7 @@ tv.heading('released',text='Released', anchor=CENTER)
 tv.heading('runtime',text='Runtime', anchor=CENTER)
 tv.heading('genre',text='Genre', anchor=CENTER)
 tv.heading('director',text='Director', anchor=CENTER)
+tv.heading('rating',text='Rating', anchor=CENTER)
 
 tv.pack()
 

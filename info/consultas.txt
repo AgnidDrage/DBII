@@ -30,3 +30,158 @@ db.films.aggregate([{ $lookup: { from: 'directors', localField: 'director', fore
 --Consulta anidada traer solo ID y NOMBRE director al buscar film--
 db.films.aggregate([{ $lookup: { from: 'directors', localField: 'director', foreignField: '_id', as: 'director'}}, { $unwind: '$director'}, { $unset: ['director.birthYear', 'director.deathYear', 'director.primaryProfession', 'director.titles']} ])
 
+
+--La ultra consulta--
+db.films.aggregate([
+  { 
+    $lookup: { 
+      from: 'directors', 
+      localField: 'director', 
+      foreignField: '_id', 
+      as: 'director'
+    }
+  }, 
+  { 
+    $unwind: '$director'
+  }, 
+  { 
+    $unset: [
+      'director.birthYear', 
+      'director.deathYear', 
+      'director.primaryProfession', 
+      'director.titles'
+      ]
+  },
+  {
+    $unwind: "$actors"
+  },
+  {
+    $lookup: {
+      from: "actors",
+      localField: "actors",
+      foreignField: "_id",
+      as: "actors"
+    }
+  },
+  {
+    $unset: [
+      "actors.birthYear",
+      "actors.deathYear",
+      "actors.primaryProfession",
+      "actors.titles"
+    ]
+  },
+  {
+    $group: {
+      _id: "$_id",
+      title: {
+        $first: "$title"
+      },
+      year: {
+        $first: "$year"
+      },
+      released: {
+        $first: "$released"
+      },
+      runtime: {
+        $first: "$runtime"
+      },
+      genre: {
+        $first: "$genre"
+      },
+      director: {
+        $first: "$director"
+      },
+      actors: {
+        $push: "$actors"
+      },
+      plot: {
+        $first: "$plot"
+      },
+      country: {
+        $first: "$country"
+      },
+      rating: {
+        $first: "$rating"
+      }
+    }
+  },
+  {
+    $addFields: {
+      actors: {
+        $reduce: {
+          input: "$actors",
+          initialValue: [],
+          in: {
+            $concatArrays: [
+              "$$value",
+              "$$this"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    $unwind: "$genre"
+  },
+  {
+    $lookup: {
+      from: "genres",
+      localField: "genre",
+      foreignField: "_id",
+      as: "genre"
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      title: {
+        $first: "$title"
+      },
+      year: {
+        $first: "$year"
+      },
+      released: {
+        $first: "$released"
+      },
+      runtime: {
+        $first: "$runtime"
+      },
+      genre: {
+        $push: "$genre"
+      },
+      director: {
+        $first: "$director"
+      },
+      actors: {
+        $first: "$actors"
+      },
+      plot: {
+        $first: "$plot"
+      },
+      country: {
+        $first: "$country"
+      },
+      rating: {
+        $first: "$rating"
+      }
+    }
+  },
+  {
+    $addFields: {
+      genre: {
+        $reduce: {
+          input: "$genre",
+          initialValue: [],
+          in: {
+            $concatArrays: [
+              "$$value",
+              "$$this"
+            ]
+          }
+        }
+      }
+    }
+  }
+]);

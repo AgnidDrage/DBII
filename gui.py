@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
 from ttkthemes import ThemedTk
 from turtle import color
+from mongoServices import *
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -156,7 +157,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: gen_tittles(),
+    command=lambda: gen_tittle(searchTitle('Carmencita')),
     relief="flat"
 )
 button_2.place(

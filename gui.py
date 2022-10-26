@@ -1,8 +1,7 @@
 from pathlib import Path
-
-# from tkinter import *
-# Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import *
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
+from turtle import color
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -12,12 +11,13 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+def show_info():
+    messagebox.showinfo('FAQ', 'Project made for BDII\n\n Members:\n  > Mariano Sanchez Toledo\n  > Agustín Montaña\n  > Bruno Orbelli\n  > Mauro Sarmiento\n\n 2022')
 
 window = Tk()
 
 window.geometry("1280x720")
 window.configure(bg = "#FFFFFF")
-
 
 canvas = Canvas(
     window,
@@ -54,13 +54,31 @@ image_3 = canvas.create_image(
     image=image_image_3
 )
 
+style= ttk.Style()
+style.theme_use('clam')
+style.configure("TCombobox", fieldbackground= "#9f86c0", background= "#9f86c0")
+
+combo = ttk.Combobox(
+    state="readonly",
+    values=["Pelicula", "Actor", "Director"],
+    justify='center',
+    font='Nunito 12'
+)
+combo.set("Filter")
+combo.place(
+    x=50, 
+    y=103,
+    height=38,
+    width=160
+)
+
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: show_info(),
     relief="flat"
 )
 button_1.place(

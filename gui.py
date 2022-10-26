@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
+from ttkthemes import ThemedTk
 from turtle import color
 
 
@@ -14,7 +15,7 @@ def relative_to_assets(path: str) -> Path:
 def show_info():
     messagebox.showinfo('FAQ', 'Project made for BDII\n\n Members:\n  > Mariano Sanchez Toledo\n  > Agustín Montaña\n  > Bruno Orbelli\n  > Mauro Sarmiento\n\n 2022')
 
-window = Tk()
+window = ThemedTk(theme='breeze')
 
 window.geometry("1280x720")
 window.configure(bg = "#FFFFFF")
@@ -55,14 +56,14 @@ image_3 = canvas.create_image(
 )
 
 style= ttk.Style()
-style.theme_use('clam')
-style.configure("TCombobox", fieldbackground= "#9f86c0", background= "#9f86c0")
+style.theme_use('breeze')
+style.configure("TCombobox", background= "#5E548E")
 
 combo = ttk.Combobox(
     state="readonly",
     values=["Pelicula", "Actor", "Director"],
     justify='center',
-    font='Nunito 12'
+    font=('Nunito', 12),
 )
 combo.set("Filter")
 combo.place(
@@ -98,7 +99,8 @@ entry_bg_1 = canvas.create_image(
 entry_1 = Entry(
     bd=0,
     bg="#FFFFFF",
-    highlightthickness=0
+    highlightthickness=0,
+    font= ('Nunito', 12)
 )
 entry_1.place(
     x=245.0,

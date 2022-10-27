@@ -67,12 +67,14 @@ def getRow(event):
 
     top = Toplevel()
     top.geometry('360x360')
+    top.title('values')
     top.mainloop()
 
 window = ThemedTk(theme='breeze')
 
 window.geometry("1280x720")
 window.configure(bg = "#FFFFFF")
+window.title('The Film Library - 2022')
 
 canvas = Canvas(
     window,

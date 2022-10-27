@@ -47,7 +47,7 @@ def generate_table():
         for j in range(len(cols)):
             values_gen.pop()
 
-def showTitle():
+def showTitle(event):
     title = entry_1.get()
     dataList = searchTitle(title)
     for i in tv.get_children():
@@ -61,6 +61,13 @@ def showTitle():
     else:
         messagebox.showinfo('Error', 'No se encontraron resultados')
 
+def getRow(event):
+    selected = tv.focus()
+    values = tv.item(selected, 'values')
+
+    top = Toplevel()
+    top.geometry('360x360')
+    top.mainloop()
 
 window = ThemedTk(theme='breeze')
 
@@ -199,6 +206,9 @@ tv.heading('director',text='Director', anchor=CENTER)
 tv.heading('rating',text='Rating', anchor=CENTER)
 
 tv.pack()
+
+tv.bind("<Double-1>", getRow)
+entry_1.bind("<Return>", showTitle)
 
 tree_scroll.config(command=tv.yview)
 

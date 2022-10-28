@@ -67,7 +67,8 @@ def getRow(event):
 
     top = Toplevel()
     top.geometry('700x600')
-    top.title(values[0])
+    top.iconbitmap('./assets/movie_ico.ico')
+    top.title(values[0] + ' Datasheet')
 
     canvasTop = Canvas(
         top,
@@ -80,14 +81,115 @@ def getRow(event):
     )
 
     canvasTop.pack()
+
     image_image_4 = PhotoImage(
         file=relative_to_assets("image_4.png"))
-    image_1 = canvasTop.create_image(
+    image_4 = canvasTop.create_image(
         350.0,
         300.0,
         image=image_image_4
     )
 
+    image_image_5 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+    image_5 = canvasTop.create_image(
+        257.0,
+        475.0,
+        image=image_image_5
+    )
+
+    image_image_6 = PhotoImage(
+        file=relative_to_assets("image_6.png"))
+    image_6 = canvasTop.create_image(
+        349.0,
+        298.0,
+        image=image_image_6
+    )
+
+    label_1 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[0] # Title
+    )
+    
+    label_1.place(
+        x=165, 
+        y=38,
+        width=495.0,
+        height=38.0
+        )
+
+    label_2 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[4] # Director
+    )
+    
+    label_2.place(
+        x=165, 
+        y=348,
+        width=495.0,
+        height=38.0
+        )
+
+    label_3 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[1] # Released
+    )
+    
+    label_3.place(
+        x=165, 
+        y=92,
+        width=188.0,
+        height=38.0
+        )
+
+    label_4 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[5] # Rating
+    )
+    
+    label_4.place(
+        x=165, 
+        y=525,
+        width=140.0,
+        height=35.0
+        )
+
+    label_5 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text='#VALUE#' # Country
+    )
+    
+    label_5.place(
+        x=435, 
+        y=523,
+        width=200.0,
+        height=35.0
+        )
+
+    label_5 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[2] # Runtime
+    )
+    
+    label_5.place(
+        x=490, 
+        y=92,
+        width=155.0,
+        height=38.0
+        )
+    
     top.mainloop()
 
 window = ThemedTk(theme='breeze')

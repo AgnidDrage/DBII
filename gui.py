@@ -47,7 +47,7 @@ def generate_table():
         for j in range(len(cols)):
             values_gen.pop()
 
-def showTitle(event):
+def showTitle():
     title = entry_1.get()
     dataList = searchTitle(title)
     for i in tv.get_children():
@@ -60,6 +60,9 @@ def showTitle(event):
             count += 1
     else:
         messagebox.showinfo('Error', 'No se encontraron resultados')
+
+def showTitleEnter(event):
+    showTitle()
 
 def getRow(event):
     selected = tv.focus()
@@ -333,7 +336,7 @@ tv.heading('rating',text='Rating', anchor=CENTER)
 tv.pack()
 
 tv.bind("<Double-1>", getRow)
-entry_1.bind("<Return>", showTitle)
+entry_1.bind("<Return>", showTitleEnter)
 
 tree_scroll.config(command=tv.yview)
 

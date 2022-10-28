@@ -67,7 +67,8 @@ def getRow(event):
 
     top = Toplevel()
     top.geometry('360x360')
-    top.title('values')
+    top.title(values[0])
+    top.iconbitmap("./assets/movie_ico.ico")
     top.mainloop()
 
 window = ThemedTk(theme='breeze')
@@ -75,6 +76,7 @@ window = ThemedTk(theme='breeze')
 window.geometry("1280x720")
 window.configure(bg = "#FFFFFF")
 window.title('The Film Library - 2022')
+window.iconbitmap("./assets/movie_ico.ico")
 
 canvas = Canvas(
     window,

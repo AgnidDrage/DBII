@@ -2,7 +2,7 @@ from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
 from ttkthemes import ThemedTk
-from turtle import color
+from turtle import color, width
 from mongoServices import *
 
 
@@ -192,6 +192,19 @@ def getRow(event):
         width=155.0,
         height=38.0
         )
+
+    # Creación Treeview Actors
+    tree_frame_actors = Frame(top)
+    tree_frame_actors.place(x = 160, y= 235)
+    tree_frame_actors.config(bg='white')
+
+    tree_scroll_actors = Scrollbar(tree_frame_actors)
+    tree_scroll_actors.pack(side=RIGHT, fill=Y)
+
+    tv_actors = ttk.Treeview(tree_frame_actors, show='tree', height= 3, yscrollcommand=tree_scroll_actors.set)
+    tv_actors.column('#0', width=450, stretch=NO)
+
+    tv_actors.pack()
     
     top.mainloop()
 

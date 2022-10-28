@@ -335,6 +335,7 @@ tv.heading('rating',text='Rating', anchor=CENTER)
 
 tv.pack()
 
+# Bindear teclas a funciones
 tv.bind("<Double-1>", getRow)
 entry_1.bind("<Return>", showTitleEnter)
 

@@ -2,7 +2,7 @@ from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
 from ttkthemes import ThemedTk
-from turtle import color
+from turtle import color, width
 from mongoServices import *
 
 
@@ -61,11 +61,159 @@ def showTitle():
     else:
         messagebox.showinfo('Error', 'No se encontraron resultados')
 
+def showTitleEnter(event):
+    showTitle()
+
+def getRow(event):
+    selected = tv.focus()
+    values = tv.item(selected, 'values')
+
+    top = Toplevel()
+    top.geometry('700x600')
+    top.iconbitmap('./assets/movie_ico.ico')
+    top.title(values[0] + ' Datasheet')
+
+    canvasTop = Canvas(
+        top,
+        bg = "#FFFFFF",
+        height = 600,
+        width = 700,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
+
+    canvasTop.pack()
+
+    image_image_4 = PhotoImage(
+        file=relative_to_assets("image_4.png"))
+    image_4 = canvasTop.create_image(
+        350.0,
+        300.0,
+        image=image_image_4
+    )
+
+    image_image_5 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+    image_5 = canvasTop.create_image(
+        257.0,
+        475.0,
+        image=image_image_5
+    )
+
+    image_image_6 = PhotoImage(
+        file=relative_to_assets("image_6.png"))
+    image_6 = canvasTop.create_image(
+        349.0,
+        298.0,
+        image=image_image_6
+    )
+
+    label_1 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[0] # Title
+    )
+    
+    label_1.place(
+        x=165, 
+        y=38,
+        width=495.0,
+        height=38.0
+        )
+
+    label_2 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[4] # Director
+    )
+    
+    label_2.place(
+        x=165, 
+        y=348,
+        width=495.0,
+        height=38.0
+        )
+
+    label_3 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[1] # Released
+    )
+    
+    label_3.place(
+        x=165, 
+        y=92,
+        width=188.0,
+        height=38.0
+        )
+
+    label_4 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[5] # Rating
+    )
+    
+    label_4.place(
+        x=165, 
+        y=525,
+        width=140.0,
+        height=35.0
+        )
+
+    label_5 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text='#VALUE#' # Country
+    )
+    
+    label_5.place(
+        x=435, 
+        y=523,
+        width=200.0,
+        height=35.0
+        )
+
+    label_5 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=values[2] # Runtime
+    )
+    
+    label_5.place(
+        x=490, 
+        y=92,
+        width=155.0,
+        height=38.0
+        )
+
+    # Creación Treeview Actors
+    tree_frame_actors = Frame(top)
+    tree_frame_actors.place(x = 160, y= 235)
+    tree_frame_actors.config(bg='white')
+
+    tree_scroll_actors = Scrollbar(tree_frame_actors)
+    tree_scroll_actors.pack(side=RIGHT, fill=Y)
+
+    tv_actors = ttk.Treeview(tree_frame_actors, show='tree', height= 3, yscrollcommand=tree_scroll_actors.set)
+    tv_actors.column('#0', width=450, stretch=NO)
+
+    tv_actors.pack()
+    
+    top.mainloop()
 
 window = ThemedTk(theme='breeze')
 
 window.geometry("1280x720")
 window.configure(bg = "#FFFFFF")
+window.title('The Film Library - 2022')
+window.iconbitmap('./assets/movie_ico.ico')
 
 canvas = Canvas(
     window,
@@ -199,6 +347,10 @@ tv.heading('director',text='Director', anchor=CENTER)
 tv.heading('rating',text='Rating', anchor=CENTER)
 
 tv.pack()
+
+# Bindear teclas a funciones
+tv.bind("<Double-1>", getRow)
+entry_1.bind("<Return>", showTitleEnter)
 
 tree_scroll.config(command=tv.yview)
 

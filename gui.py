@@ -48,8 +48,9 @@ def generate_table():
             values_gen.pop()
 
 def showTitle():
+    global fullData
     title = entry_1.get()
-    dataList = searchTitle(title)
+    dataList, fullData = searchTitle(title)
     for i in tv.get_children():
         tv.delete(i)
         
@@ -66,7 +67,10 @@ def showTitleEnter(event):
 
 def getRow(event):
     selected = tv.focus()
-    values = tv.item(selected, 'values')
+    # values = tv.item(selected, 'values')
+    # print(values)
+    # breakpoint()
+    values = fullData[int(selected)]
 
     top = Toplevel()
     top.geometry('700x600')
@@ -127,7 +131,7 @@ def getRow(event):
         top,
         background='#FFFFFF',
         font='Nunito 12',
-        text=values[4] # Director
+        text=values[5]["full-name"] # Director
     )
     
     label_2.place(
@@ -141,7 +145,7 @@ def getRow(event):
         top,
         background='#FFFFFF',
         font='Nunito 12',
-        text=values[1] # Released
+        text=values[2] # Released
     )
     
     label_3.place(
@@ -155,7 +159,7 @@ def getRow(event):
         top,
         background='#FFFFFF',
         font='Nunito 12',
-        text=values[5] # Rating
+        text=values[9] # Rating
     )
     
     label_4.place(
@@ -169,7 +173,7 @@ def getRow(event):
         top,
         background='#FFFFFF',
         font='Nunito 12',
-        text='#VALUE#' # Country
+        text=values[8] # Country
     )
     
     label_5.place(
@@ -183,7 +187,7 @@ def getRow(event):
         top,
         background='#FFFFFF',
         font='Nunito 12',
-        text=values[2] # Runtime
+        text=values[3] # Runtime
     )
     
     label_5.place(

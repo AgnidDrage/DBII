@@ -236,7 +236,7 @@ def getRow(event):
 
     for i in range(len(values[6])):
         if values[6] != "N/A":
-            actor_list.append([values[6][i]["full-name"]])
+            actor_list.append([[values[6][i]["full-name"]]])
         else:
             actor_list.append(["N/A"])
             break
@@ -245,13 +245,14 @@ def getRow(event):
         tv_actors.insert(parent='', index='end', iid=countA, text ='', values=(row[0]))
         countA += 1
 
-    def getNames(event):
-        selected = tv_actors.focus()
-
+    # La variable name tiene el nombre del actor/director que le pasamos en las funciones getNamesDirector o getNamesActor
+    def getNames(name):
         topN = Toplevel()
         topN.geometry('700x350')
         topN.iconbitmap('./assets/movie_ico.ico')
-        topN.title('Director/Actor' + ' Datasheet')
+        topN.title(name + ' Datasheet')
+
+        #* ACA DEBERIAS GENERAR UNA VARIABLE QUE LLAME LOS DATOS DE LA VARIABLE name, NO LE PONGAS DE NOMBRE values, ponele otro...
 
         canvasTopN = Canvas(
             topN,
@@ -289,11 +290,12 @@ def getRow(event):
             image=image_image_N3
         )
 
+        # Esta es la label donde se muestra el nombre del Actor/Director
         label_1N = ttk.Label(
         topN,
         background='#FFFFFF',
         font='Nunito 12',
-        text=(values[5]["full-name"] if values[5] != "N/A" else "N/A") # Director Name
+        text= name # Actor/Director Name
         )
     
         label_1N.place(
@@ -303,11 +305,74 @@ def getRow(event):
             height=28.0
             )
 
+        # Esta es la label donde se muestra el Birth-Year
+        label_2N = ttk.Label(
+        topN,
+        background='gray',
+        font='Nunito 12',
+        text= '#' # Birth-Year
+        )
+    
+        label_2N.place(
+            x=165, 
+            y=78,
+            width=185.0,
+            height=28.0
+            )
+
+        # Esta es la label donde se muestra el Death-Year
+        label_3N = ttk.Label(
+        topN,
+        background='gray',
+        font='Nunito 12',
+        text= '#' # Death-Year
+        )
+    
+        label_3N.place(
+            x=490, 
+            y=78,
+            width=155.0,
+            height=28.0
+            )
+
+        # Esta es la label donde se muestra la Profesion
+        label_4N = ttk.Label(
+        topN,
+        background='gray',
+        font='Nunito 12',
+        wraplength=483,
+        justify='left',
+        text='#' # Plot
+        )
+        
+        label_4N.place(
+            x=165, 
+            y=120,
+            width=483.0,
+            height=55.0
+            )
+
         topN.resizable(False, False)
         topN.mainloop()
 
-    label_2.bind("<Double-Button-1>", getNames)
-    tv_actors.bind("<Double-1>", getNames)
+    # Esta funcion llama a la funcion getNames pasandole como parametro el nombre del director, la funcion toma como entrada el boton
+    def getNamesDirector(event):
+        if label_2['text'] == 'N/A':
+            messagebox.showinfo('Error', 'No hay Datasheet de director disponible')
+        else:
+            getNames(label_2['text'])
+
+    # Esta funcion llama a la funcion getNames pasandole como parametro el nombre del actor, la funcion toma como entrada el valor seleccionado en el treeview
+    def getNamesActor(event):
+        selected = tv_actors.focus()
+        actorName = tv_actors.item(selected, 'values')
+        if actorName[0] == 'N/A':
+            messagebox.showinfo('Error', 'No hay Datasheet de actor disponible')
+        else:
+            getNames(actorName[0])
+
+    label_2.bind("<Double-Button-1>", getNamesDirector)
+    tv_actors.bind("<Double-1>", getNamesActor)
 
     top.resizable(False, False)
     top.mainloop()

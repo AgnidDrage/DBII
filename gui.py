@@ -2,50 +2,18 @@ from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, ttk
 from ttkthemes import ThemedTk
-from turtle import color, width
+from turtle import bgcolor, color, width
 from mongoServices import *
 
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
-
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 def show_info():
     messagebox.showinfo('FAQ', 'Project made for BDII\n\n Members:\n  > Mariano Sanchez Toledo\n  > Agustín Montaña\n  > Bruno Orbelli\n  > Mauro Sarmiento\n\n 2022')
-
-def generate_table():
-    table0 = [] # La tabla table0 se conserva para control
-
-    for i in tv.get_children(): # Reinicia los datos de la tabla despues de cada envio de datos
-        tv.delete(i)
-    for i in range(0):
-        table0.append()
-        tv.insert('',END,text=str(i),values=()) # Se insertan los datos de la tabla de resultados en la primer tabla
-
-    len_cols = len() # Cantidad de columnas
-    cols = []
-
-    for i in range(len_cols): # Agrega la cantidad de columnas a una lista cols que les asigna un ID a cada columna
-        cols.append(i)
-    cols.pop()
-
-    tv2 = ttk.Treeview(window,columns=cols,height=8) # Agrega las columnas reconocidas a la tabla en forma dinamica
-    tv2.column('#0', width=80) # Se le asigna formato a la primer columna
-    for i in range(len(cols)): # Se les asigna formato al resto de columnas
-        tv2.column(i, width=80)
-    tv2.place(x=50,y=750) # Se posiciona la tercer tabla
-
-    values_gen = [] # Lista de valores a posicionar en la tabla
-
-    for i in range(): # Se rellenan los datos de la tabla
-        for l in range(len(cols)):
-            values_gen.append()
-        tv2.insert('',i, text='' ,values=values_gen)
-        for j in range(len(cols)):
-            values_gen.pop()
 
 def showTitle():
     global fullData
@@ -67,9 +35,6 @@ def showTitleEnter(event):
 
 def getRow(event):
     selected = tv.focus()
-    # values = tv.item(selected, 'values')
-    # print(values)
-    # breakpoint()
     values = fullData[int(selected)]
 
     top = Toplevel()
@@ -127,17 +92,22 @@ def getRow(event):
         height=38.0
         )
 
-    label_2 = ttk.Label(
+    label_2 = Button(
         top,
-        background='#FFFFFF',
+        activebackground='#FFFFFF',
+        bg='#FFFFFF',
         font='Nunito 12',
-        text=values[5]["full-name"] # Director
+        anchor='w',
+        borderwidth=0,
+        highlightthickness=0,
+        relief="flat",
+        text=(values[5]["full-name"] if values[5] != "N/A" else "N/A") # Director
     )
     
     label_2.place(
         x=165, 
         y=348,
-        width=495.0,
+        width=493.0,
         height=38.0
         )
 
@@ -183,19 +153,62 @@ def getRow(event):
         height=35.0
         )
 
-    label_5 = ttk.Label(
+    label_6 = ttk.Label(
         top,
         background='#FFFFFF',
         font='Nunito 12',
         text=values[3] # Runtime
     )
     
-    label_5.place(
+    label_6.place(
         x=490, 
         y=92,
         width=155.0,
         height=38.0
         )
+    
+    label_7 = ttk.Label(
+        top,
+        background='#FFFFFF',
+        font='Nunito 12',
+        wraplength=483,
+        justify='left',
+        text=values[7] # Plot
+    )
+    
+    label_7.place(
+        x=165, 
+        y=400,
+        width=483.0,
+        height=110.0
+        )
+
+    # Creación Treeview Genres
+    tree_frame_genres = Frame(top)
+    tree_frame_genres.place(x = 160, y= 145)
+    tree_frame_genres.config(bg='white')
+
+    tree_scroll_genres = Scrollbar(tree_frame_genres)
+    tree_scroll_genres.pack(side=RIGHT, fill=Y)
+
+    tv_genres = ttk.Treeview(tree_frame_genres, columns=('genre'), show='tree', height= 2, yscrollcommand=tree_scroll_genres.set)
+
+    tv_genres.column('#0', width=0, stretch=NO)
+    tv_genres.column('genre', width=450, minwidth=450,anchor=CENTER)
+
+    tv_genres.heading('#0', text='', anchor=CENTER)
+    tv_genres.heading('genre',text='Genre', anchor=CENTER)
+
+    tv_genres.pack()
+
+    for i in tv_genres.get_children():
+        tv_genres.delete(i)
+
+    countG = 0
+    genre_list = [[i['name']] for i in values[4]]
+    for row in genre_list:
+        tv_genres.insert(parent='', index='end', iid=countG, text ='', values=(row[0]))
+        countG += 1
 
     # Creación Treeview Actors
     tree_frame_actors = Frame(top)
@@ -205,11 +218,98 @@ def getRow(event):
     tree_scroll_actors = Scrollbar(tree_frame_actors)
     tree_scroll_actors.pack(side=RIGHT, fill=Y)
 
-    tv_actors = ttk.Treeview(tree_frame_actors, show='tree', height= 3, yscrollcommand=tree_scroll_actors.set)
-    tv_actors.column('#0', width=450, stretch=NO)
+    tv_actors = ttk.Treeview(tree_frame_actors, columns=('actor'), show='tree', height= 3, yscrollcommand=tree_scroll_actors.set)
+    
+    tv_actors.column('#0', width=0, stretch=NO)
+    tv_actors.column('actor', width=450, minwidth=450,anchor=CENTER)
+
+    tv_actors.heading('#0', text='', anchor=CENTER)
+    tv_actors.heading('actor',text='Actor', anchor=CENTER)
 
     tv_actors.pack()
+
+    for i in tv_actors.get_children():
+        tv_actors.delete(i)
+
+    countA = 0
+    actor_list = []
+
+    for i in range(len(values[6])):
+        if values[6] != "N/A":
+            actor_list.append([values[6][i]["full-name"]])
+        else:
+            actor_list.append(["N/A"])
+            break
+
+    for row in actor_list:
+        tv_actors.insert(parent='', index='end', iid=countA, text ='', values=(row[0]))
+        countA += 1
+
+    def getNames(event):
+        selected = tv_actors.focus()
+
+        topN = Toplevel()
+        topN.geometry('700x350')
+        topN.iconbitmap('./assets/movie_ico.ico')
+        topN.title('Director/Actor' + ' Datasheet')
+
+        canvasTopN = Canvas(
+            topN,
+            bg = "#FFFFFF",
+            height = 600,
+            width = 700,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge"
+        )
+
+        canvasTopN.pack()
+
+        image_image_N1 = PhotoImage(
+        file=relative_to_assets("image_N1.png"))
+        image_N1 = canvasTopN.create_image(
+            350.0,
+            300.0,
+            image=image_image_N1
+        )
+
+        image_image_N2 = PhotoImage(
+            file=relative_to_assets("image_N2.png"))
+        image_N2 = canvasTopN.create_image(
+            246.0,
+            214.0,
+            image=image_image_N2
+        )
+
+        image_image_N3 = PhotoImage(
+            file=relative_to_assets("image_N3.png"))
+        image_N3 = canvasTopN.create_image(
+            349.0,
+            173.0,
+            image=image_image_N3
+        )
+
+        label_1N = ttk.Label(
+        topN,
+        background='#FFFFFF',
+        font='Nunito 12',
+        text=(values[5]["full-name"] if values[5] != "N/A" else "N/A") # Director Name
+        )
     
+        label_1N.place(
+            x=165, 
+            y=35,
+            width=495.0,
+            height=28.0
+            )
+
+        topN.resizable(False, False)
+        topN.mainloop()
+
+    label_2.bind("<Double-Button-1>", getNames)
+    tv_actors.bind("<Double-1>", getNames)
+
+    top.resizable(False, False)
     top.mainloop()
 
 window = ThemedTk(theme='breeze')

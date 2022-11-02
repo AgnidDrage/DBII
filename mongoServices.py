@@ -61,6 +61,11 @@ def searchDirectorById(id):
         return "N/A"
     return data
 
+def searchTitleById(id):
+    data = colPeli.find_one({"_id": id})
+    if data is None:
+        return "N/A"
+    return data
 
 def searchActor(actor):
     return colAct.find({"full-name": {"$regex": actor, "$options": "i"}})
@@ -89,6 +94,21 @@ def searchGenreArray(arrayId):
             continue
     if len(data) == 0:
         return "N/A"
+    return data
+
+def searchName(name):
+    nameData = colDir.find_one({"full-name": name})
+    if nameData is None:
+        nameData = colAct.find_one({"full-name": name})
+        if nameData is None:
+            return ["N/A", "N/A", "N/A", "N/A", "N/A"]
+    data = []
+    titleArr = []
+    data.extend([nameData["full-name"], nameData["birthYear"], nameData["deathYear"], nameData["primaryProfession"]])
+    for id in nameData["titles"]:
+        title = searchTitleById(id)
+        titleArr.append(title["title"])
+    data.append(titleArr)
     return data
 
 

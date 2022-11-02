@@ -253,6 +253,8 @@ def getRow(event):
         topN.title(name + ' Datasheet')
 
         #* ACA DEBERIAS GENERAR UNA VARIABLE QUE LLAME LOS DATOS DE LA VARIABLE name, NO LE PONGAS DE NOMBRE values, ponele otro...
+        nameData = searchName(name)
+
 
         canvasTopN = Canvas(
             topN,
@@ -295,7 +297,7 @@ def getRow(event):
         topN,
         background='#FFFFFF',
         font='Nunito 12',
-        text= name # Actor/Director Name
+        text= nameData[0] # Actor/Director Name
         )
     
         label_1N.place(
@@ -310,7 +312,7 @@ def getRow(event):
         topN,
         background='#FFFFFF',
         font='Nunito 12',
-        text= '#' # Birth-Year
+        text= nameData[1] # Birth-Year
         )
     
         label_2N.place(
@@ -325,7 +327,7 @@ def getRow(event):
         topN,
         background='#FFFFFF',
         font='Nunito 12',
-        text= '#' # Death-Year
+        text= nameData[2] # Death-Year
         )
     
         label_3N.place(
@@ -342,7 +344,7 @@ def getRow(event):
         font='Nunito 12',
         wraplength=483,
         justify='left',
-        text='#' # Plot
+        text=nameData[3] # Plot
         )
         
         label_4N.place(
@@ -375,9 +377,9 @@ def getRow(event):
 
         # Aca se rellena el treeview de las peliculas a mostrar
         countM = 0
-        movies_list = ['# LISTA DE PELICULAS A AGREGAR']
+        movies_list = [[title] for title in nameData[4]]
         for row in movies_list:
-            tv_movies.insert(parent='', index='end', iid=countM, text ='', values=(row[0]))
+            tv_movies.insert(parent='', index='end', iid=countM, text ='', values=(row))
             countM += 1
 
         topN.resizable(False, False)

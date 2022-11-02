@@ -14,7 +14,6 @@ def searchTitle(title):
         data = list(data)
         dataList = []
         fullData = []
-        print(data)
         for i in range(len(data)):
             toDataList = []
             toFullData = []
@@ -94,4 +93,4 @@ def searchGenreArray(arrayId):
 
 
 if __name__ == "__main__":
-    print(searchTitle("Clown"))
+    pass

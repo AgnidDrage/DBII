@@ -308,7 +308,7 @@ def getRow(event):
         # Esta es la label donde se muestra el Birth-Year
         label_2N = ttk.Label(
         topN,
-        background='gray',
+        background='#FFFFFF',
         font='Nunito 12',
         text= '#' # Birth-Year
         )
@@ -323,7 +323,7 @@ def getRow(event):
         # Esta es la label donde se muestra el Death-Year
         label_3N = ttk.Label(
         topN,
-        background='gray',
+        background='#FFFFFF',
         font='Nunito 12',
         text= '#' # Death-Year
         )
@@ -338,7 +338,7 @@ def getRow(event):
         # Esta es la label donde se muestra la Profesion
         label_4N = ttk.Label(
         topN,
-        background='gray',
+        background='#FFFFFF',
         font='Nunito 12',
         wraplength=483,
         justify='left',
@@ -351,6 +351,34 @@ def getRow(event):
             width=483.0,
             height=55.0
             )
+
+        # Creación Treeview Movies
+        tree_frame_movies = Frame(topN)
+        tree_frame_movies.place(x = 160, y= 190)
+        tree_frame_movies.config(bg='white')
+
+        tree_scroll_movies = Scrollbar(tree_frame_movies)
+        tree_scroll_movies.pack(side=RIGHT, fill=Y)
+
+        tv_movies = ttk.Treeview(tree_frame_movies, columns=('movie'), show='tree', height= 4, yscrollcommand=tree_scroll_movies.set)
+        
+        tv_movies.column('#0', width=0, stretch=NO)
+        tv_movies.column('movie', width=450, minwidth=450,anchor=CENTER)
+
+        tv_movies.heading('#0', text='', anchor=CENTER)
+        tv_movies.heading('movie',text='Actor', anchor=CENTER)
+
+        tv_movies.pack()
+
+        for i in tv_movies.get_children():
+            tv_movies.delete(i)
+
+        # Aca se rellena el treeview de las peliculas a mostrar
+        countM = 0
+        movies_list = ['# LISTA DE PELICULAS A AGREGAR']
+        for row in movies_list:
+            tv_movies.insert(parent='', index='end', iid=countM, text ='', values=(row[0]))
+            countM += 1
 
         topN.resizable(False, False)
         topN.mainloop()

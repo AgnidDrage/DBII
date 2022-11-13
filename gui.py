@@ -451,21 +451,6 @@ image_3 = canvas.create_image(
 
 style= ttk.Style()
 style.theme_use('breeze')
-style.configure("TCombobox", background= "#5E548E")
-
-combo = ttk.Combobox(
-    state="readonly",
-    values=["Pelicula", "Actor", "Director"],
-    justify='center',
-    font=('Nunito', 12),
-)
-combo.set("Pelicula")
-combo.place(
-    x=50, 
-    y=103,
-    height=38,
-    width=160
-)
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))

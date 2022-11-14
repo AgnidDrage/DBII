@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import loads, dumps
 
 client = MongoClient('localhost', 27017)
+#client = MongoClient('mongodb+srv://AgnidDrage:Lunitamia123123@thefilmlibrary.krwlk51.mongodb.net/?retryWrites=true&w=majority', 27017)
 global films, actors, directors, genres
 
 def load_files():

@@ -1,6 +1,7 @@
 import pymongo
 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
+#client = pymongo.MongoClient('mongodb+srv://AgnidDrage:Lunitamia123123@thefilmlibrary.krwlk51.mongodb.net/?retryWrites=true&w=majority')
 db = client["the_film_library"]
 colPeli = db["films"]
 colDir = db["directors"]

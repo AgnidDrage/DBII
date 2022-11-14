@@ -185,3 +185,219 @@ db.films.aggregate([
     }
   }
 ]);
+
+
+//Obtener peliculas con director, lista de actores y géneros
+
+db.films.aggregate([
+  { 
+    $lookup: { 
+      from: 'directors', 
+      localField: 'director', 
+      foreignField: '_id', 
+      as: 'director'
+    }
+  }, 
+  { 
+    $unwind: '$director'
+  }, 
+  { 
+    $unset: [
+      'director.birthYear', 
+      'director.deathYear', 
+      'director.primaryProfession', 
+      'director.titles'
+      ]
+  },
+  {
+    $unwind: "$actors"
+  },
+  {
+    $lookup: {
+      from: "actors",
+      localField: "actors",
+      foreignField: "_id",
+      as: "actors"
+    }
+  },
+  {
+    $unset: [
+      "actors.birthYear",
+      "actors.deathYear",
+      "actors.primaryProfession",
+      "actors.titles"
+    ]
+  },
+  {
+    $group: {
+      _id: "$_id",
+      title: {
+        $first: "$title"
+      },
+      year: {
+        $first: "$year"
+      },
+      released: {
+        $first: "$released"
+      },
+      runtime: {
+        $first: "$runtime"
+      },
+      genre: {
+        $first: "$genre"
+      },
+      director: {
+        $first: "$director"
+      },
+      actors: {
+        $push: "$actors"
+      },
+      plot: {
+        $first: "$plot"
+      },
+      country: {
+        $first: "$country"
+      },
+      rating: {
+        $first: "$rating"
+      }
+    }
+  },
+  {
+    $addFields: {
+      actors: {
+        $reduce: {
+          input: "$actors",
+          initialValue: [],
+          in: {
+            $concatArrays: [
+              "$$value",
+              "$$this"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    $unwind: "$genre"
+  },
+  {
+    $lookup: {
+      from: "genres",
+      localField: "genre",
+      foreignField: "_id",
+      as: "genre"
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      title: {
+        $first: "$title"
+      },
+      year: {
+        $first: "$year"
+      },
+      released: {
+        $first: "$released"
+      },
+      runtime: {
+        $first: "$runtime"
+      },
+      genre: {
+        $push: "$genre"
+      },
+      director: {
+        $first: "$director"
+      },
+      actors: {
+        $first: "$actors"
+      },
+      plot: {
+        $first: "$plot"
+      },
+      country: {
+        $first: "$country"
+      },
+      rating: {
+        $first: "$rating"
+      }
+    }
+  },
+  {
+    $addFields: {
+      genre: {
+        $reduce: {
+          input: "$genre",
+          initialValue: [],
+          in: {
+            $concatArrays: [
+              "$$value",
+              "$$this"
+            ]
+          }
+        }
+      }
+    }
+  }
+]).pretty();
+
+// Obtener las 10 mejores peliculas (en función de las calificaciones) de cada año, ordenadas decrecientemente según la calificación
+
+db.films.aggregate([
+  {
+    "$match": {
+      rating: {
+        "$ne": "N/A"
+      }
+    }
+  },
+  {
+    "$group": {
+      "_id": "$year",
+      "movies": {
+        "$push": "$$ROOT"
+      },
+      
+    }
+  },
+  {
+    "$project": {
+      _id: "$_id",
+      "movies": {
+        "$sortArray": {
+          input: "$movies",
+          sortBy: {
+            "rating": -1
+          }
+        }
+      }
+    }
+  },
+  {
+    "$project": {
+      _id: "$_id",
+      "movies": {
+        "$slice": [
+          "$movies",
+          10
+        ]
+      }
+    }
+  },
+  {
+    "$unset": [
+      "movies.year",
+      "movies.released",
+      "movies.runtime",
+      "movies.genre",
+      "movies.director",
+      "movies.actors",
+      "movies.plot",
+      "movies.country"
+    ]
+  }
+]).pretty();
+
+// Obtener los géneros más populares (recuento de películas con un género dado) por año, en orden decreciente de popularidad.

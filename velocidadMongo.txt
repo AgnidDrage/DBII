@@ -10,7 +10,7 @@ Indice2: db.films.createIndex({rating: -1})
 Con un solo indice 2ms
 
 
---Busqueda de rating mayor o igual a 5 y menos o igual a 7--
+--Busqueda de rating mayor o igual a 5 y menor o igual a 7--
 Sin indice: 18ms
 Con indice: 8ms
 

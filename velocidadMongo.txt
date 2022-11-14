@@ -1,6 +1,5 @@
 Coleccion film:
 
-
 --Busqueda de rating mayor o igual a 3 y menos o igual a 4--
 Sin indice: 12ms
 Con indice: 1ms
@@ -68,3 +67,50 @@ Ya que con estos se obtuvieron los mejores resultados de rendimiento.
 
 Coleccion Actors y directors:
 
+--Busqueda de director "Alexander Black"--
+Sin indice: 1ms
+Con indice: 0ms
+Consulta: db.actors.find({name:"Alexander Black"}).explain("executionStats")
+Indice: db.directors.createIndex({"full-name": 1})
+
+
+--Busqueda de actor "Ploetz"--
+Sin indice: 5ms
+Con indice: 0ms
+Consulta: db.actors.find({name:"Ploetz"}).explain("executionStats")
+Indice: db.actors.createIndex({"full-name": 1})
+
+
+--Busqueda de directores nacidos entre 1970-1980--
+Sin indice: 7ms
+Con indice: 1ms
+Consulta: db.directors.find({birtYear:{$gte:1970, $lte:1980}}).explain("executionStats")
+Indice: db.directors.createIndex({birtYear: 1})
+
+--Busqueda de directores fallecidos entre 1970-1980--
+Sin indice: 7ms
+Con indice: 1ms
+Consulta: db.directors.find({deathYear:{$gte:1970, $lte:1980}}).explain("executionStats")
+Indice: db.directors.createIndex({deathYear: 1})
+
+--Busqueda de actores nacidos entre 1970-1980--
+Sin indice: 9ms
+Con indice: 5ms
+Consulta: db.actors.find({birtYear:{$gte:1970, $lte:1980}}).explain("executionStats")
+Indice: db.actors.createIndex({birtYear: 1})
+
+--Busqueda de actores fallecidos entre 1970-1980--
+Sin indice: 9ms
+Con indice: 5ms
+Consulta: db.actors.find({deathYear:{$gte:1970, $lte:1980}}).explain("executionStats")
+Indice: db.actors.createIndex({deathYear: 1})
+
+Indices elegidos para actores/directores:
+
+db.directors.createIndex({"full-name": 1})
+db.directors.createIndex({birtYear: 1})
+db.directors.createIndex({deathYear: 1})
+
+db.actors.createIndex({"full-name": 1})
+db.actors.createIndex({birtYear: 1})
+db.actors.createIndex({deathYear: 1})

@@ -401,3 +401,19 @@ db.films.aggregate([
 ]).pretty();
 
 // Obtener los géneros más populares (recuento de películas con un género dado) por año, en orden decreciente de popularidad.
+
+// Agrupacion de peliculas por año en orden ascendente
+
+db.films.aggregate([{$group: {_id: "$year", "cantidad":{$sum:1}}}]).sort({_id:1})
+
+// Agrupacion de peliculas por año, ordenado por promedio de rating en forma descendente
+
+db.films.aggregate([{$group: {_id: "$year", "cantidad":{$sum:1}, "prom_rating": {$avg: "$rating"}}}]).sort({"prom_rating":1})
+
+// Peliculas cuyo plot tenga la palabra ship incluida
+
+db.films.find({plot:/ship/})
+
+// Peliculas cuyo runtime empiece con 1 ordenado por año en forma descendente
+
+db.films.find({runtime:/^1/}).sort({year:-1})

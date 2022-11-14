@@ -1,0 +1,16 @@
+--Busqueda de titulos que llevan "Car" y tienen rating mayor o igual a 3 y menos o igual a 4--
+Sin indice compuesto: 12ms
+Con indice compuesto: 3ms
+Consulta: db.films.find({title:{"$regex": "Car", "$options": "i"}, rating:{"$gte":3,"$lte":4}}).explain("executionStats")
+Indice: db.films.createIndex({title:1, rating:-1})
+ES BAIT
+
+--Busqueda de rating mayor o igual a 3 y menos o igual a 4--
+Sin indice: 12ms
+Con indice: 1ms
+Con un solo indice: 2ms
+Consulta: db.films.find({rating:{"$gte":3,"$lte":4}}).explain("executionStats")
+Indice1: db.films.createIndex({rating: 1})
+Indice2: db.films.createIndex({rating: -1})
+Con un solo indice 2ms
+

@@ -1,9 +1,5 @@
---Busqueda de titulos que llevan "Car" y tienen rating mayor o igual a 3 y menos o igual a 4--
-Sin indice compuesto: 12ms
-Con indice compuesto: 3ms
-Consulta: db.films.find({title:{"$regex": "Car", "$options": "i"}, rating:{"$gte":3,"$lte":4}}).explain("executionStats")
-Indice: db.films.createIndex({title:1, rating:-1})
-ES BAIT
+Coleccion film:
+
 
 --Busqueda de rating mayor o igual a 3 y menos o igual a 4--
 Sin indice: 12ms
@@ -13,4 +9,62 @@ Consulta: db.films.find({rating:{"$gte":3,"$lte":4}}).explain("executionStats")
 Indice1: db.films.createIndex({rating: 1})
 Indice2: db.films.createIndex({rating: -1})
 Con un solo indice 2ms
+
+
+--Busqueda de rating mayor o igual a 5 y menos o igual a 7--
+Sin indice: 18ms
+Con indice: 8ms
+
+
+--Busqueda de año mayor a 1980--
+Sin indice: 11ms
+Con indice: 0ms :O :O :O
+Consulta: db.films.find({year:{"$gt":1980}}).explain("executionStats")
+Indice:  db.films.createIndex({year: 1})
+
+
+--Busqueda de año mayor a 1980 y menor a 1990--
+Sin indice: 11ms
+Con indice: 0ms
+Consulta: db.films.find({year:{"$gt":1980,"$lt":1990}}).explain("executionStats")
+Indice: db.films.createIndex({year: 1})
+
+
+NOTA: Por alguna razon al trabajar con indices de texto la velocidad de busqueda empeora.
+
+
+--Busqueda pelicula Carmencita--
+Sin indice: 11ms
+Con indice: Algunas veces 9ms otras veces 15ms
+Consulta: db.films.find({title:"Carmencita"}).explain("executionStats")
+Indice: db.films.createIndex({title:"text"})
+
+--Busqueda pelicula Carmencita con indice -1--
+Sin indice: 11ms
+Con indice: 0ms
+Consulta: db.films.find({title:"Carmencita"}).explain("executionStats")
+Indice: db.films.createIndex({title:-1})
+
+--Busqueda pelicula Outside the Gates--
+Sin indice: 11ms
+Con indice: 9ms
+Consulta: db.films.find({title:"Outside the Gates"}).explain("executionStats")
+Indice: db.films.createIndex({title:"text"})
+
+
+--Busqueda pelicula Outside the Gates con indice -1--
+Sin indice: 11ms
+Con indice: 0ms
+Consulta: db.films.find({title:"Outside the Gates"}).explain("executionStats")
+Indice: db.films.createIndex({title:-1})
+
+
+Se decide dejar indices en coleccion films:
+db.films.createIndex({title:-1})
+db.films.createIndex({year: 1})
+db.films.createIndex({rating: -1})
+Ya que con estos se obtuvieron los mejores resultados de rendimiento.
+
+
+Coleccion Actors y directors:
 

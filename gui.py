@@ -18,17 +18,23 @@ def show_info():
 def showTitle():
     global fullData
     title = entry_1.get()
-    dataList, fullData = searchTitle(title)
+    try:
+        dataList, fullData = searchTitle(title)
+    except:
+        messagebox.showinfo('Error', 'Debe ingresar alguna palabra clave para la busqueda')
     for i in tv.get_children():
         tv.delete(i)
         
     count = 0
-    if len(dataList) != 0:
-        for row in dataList:
-            tv.insert(parent='', index='end', iid=count, text ='', values=(row[0], row[1], row[2], row[3], row[4], row[5]))
-            count += 1
-    else:
-        messagebox.showinfo('Error', 'No se encontraron resultados')
+    try:
+        if len(dataList) != 0:
+            for row in dataList:
+                tv.insert(parent='', index='end', iid=count, text ='', values=(row[0], row[1], row[2], row[3], row[4], row[5]))
+                count += 1
+        else:
+            messagebox.showinfo('Error', 'No se encontraron resultados')
+    except:
+        pass
 
 def showTitleEnter(event):
     showTitle()

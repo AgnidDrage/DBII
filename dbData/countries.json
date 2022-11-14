@@ -1,0 +1,501 @@
+[{
+  "_id": {
+    "$oid": "635a8d47a67357eef76e6079"
+  },
+  "name": "United States"
+},{
+  "_id": {
+    "$oid": "635a8d47a67357eef76e607a"
+  },
+  "name": "France"
+},{
+  "_id": {
+    "$oid": "635a8d47a67357eef76e607b"
+  },
+  "name": "Germany"
+},{
+  "_id": {
+    "$oid": "635a8d47a67357eef76e607c"
+  },
+  "name": "United Kingdom"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e607d"
+  },
+  "name": "UK"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e607e"
+  },
+  "name": "Mexico"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e607f"
+  },
+  "name": "Portugal"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e6080"
+  },
+  "name": "Spain"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e6081"
+  },
+  "name": "Sweden, France"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e6082"
+  },
+  "name": "Austria, Hungary"
+},{
+  "_id": {
+    "$oid": "635a8d48a67357eef76e6083"
+  },
+  "name": "Czechoslovakia"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6084"
+  },
+  "name": "Japan"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6085"
+  },
+  "name": "Australia"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6086"
+  },
+  "name": "Hungary"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6087"
+  },
+  "name": "Denmark"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6088"
+  },
+  "name": "United Kingdom, Canada"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e6089"
+  },
+  "name": "Spain, France"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e608a"
+  },
+  "name": "USA"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e608b"
+  },
+  "name": "Italy"
+},{
+  "_id": {
+    "$oid": "635a8d49a67357eef76e608c"
+  },
+  "name": "Finland"
+},{
+  "_id": {
+    "$oid": "635a8d4aa67357eef76e608d"
+  },
+  "name": "Argentina"
+},{
+  "_id": {
+    "$oid": "635a8d4aa67357eef76e608e"
+  },
+  "name": "Spain, Italy"
+},{
+  "_id": {
+    "$oid": "635a8d4aa67357eef76e608f"
+  },
+  "name": "Russia"
+},{
+  "_id": {
+    "$oid": "635a8d4aa67357eef76e6090"
+  },
+  "name": "France, Belgium"
+},{
+  "_id": {
+    "$oid": "635a8d4ba67357eef76e6091"
+  },
+  "name": "France, United Kingdom, Italy"
+},{
+  "_id": {
+    "$oid": "635a8d4ba67357eef76e6092"
+  },
+  "name": "Brazil"
+},{
+  "_id": {
+    "$oid": "635a8d4ca67357eef76e6093"
+  },
+  "name": "Sweden"
+},{
+  "_id": {
+    "$oid": "635a8d4ca67357eef76e6094"
+  },
+  "name": "Romania"
+},{
+  "_id": {
+    "$oid": "635a8d4ca67357eef76e6095"
+  },
+  "name": "Norway"
+},{
+  "_id": {
+    "$oid": "635a8d4ca67357eef76e6096"
+  },
+  "name": "Poland"
+},{
+  "_id": {
+    "$oid": "635a8d4da67357eef76e6097"
+  },
+  "name": "United Kingdom, Portugal"
+},{
+  "_id": {
+    "$oid": "635a8d4da67357eef76e6098"
+  },
+  "name": "Belgium"
+},{
+  "_id": {
+    "$oid": "635a8d4da67357eef76e6099"
+  },
+  "name": "Italy, Russia"
+},{
+  "_id": {
+    "$oid": "635a8d4da67357eef76e609a"
+  },
+  "name": "Germany, Denmark"
+},{
+  "_id": {
+    "$oid": "635a8d4ea67357eef76e609b"
+  },
+  "name": "France, USA"
+},{
+  "_id": {
+    "$oid": "635a8d4ea67357eef76e609c"
+  },
+  "name": "Netherlands, France"
+},{
+  "_id": {
+    "$oid": "635a8d4ea67357eef76e609d"
+  },
+  "name": "France, Netherlands"
+},{
+  "_id": {
+    "$oid": "635a8d4ea67357eef76e609e"
+  },
+  "name": "Netherlands"
+},{
+  "_id": {
+    "$oid": "635a8d4ea67357eef76e609f"
+  },
+  "name": "United States, Mexico"
+},{
+  "_id": {
+    "$oid": "635a8d4fa67357eef76e60a0"
+  },
+  "name": "France, United States"
+},{
+  "_id": {
+    "$oid": "635a8d4fa67357eef76e60a1"
+  },
+  "name": "United States, United Kingdom"
+},{
+  "_id": {
+    "$oid": "635a8d50a67357eef76e60a2"
+  },
+  "name": "Canada"
+},{
+  "_id": {
+    "$oid": "635a8d51a67357eef76e60a3"
+  },
+  "name": "Belgium, France"
+},{
+  "_id": {
+    "$oid": "635a8d51a67357eef76e60a4"
+  },
+  "name": "India"
+},{
+  "_id": {
+    "$oid": "635a8d52a67357eef76e60a5"
+  },
+  "name": "Austria"
+},{
+  "_id": {
+    "$oid": "635a8d53a67357eef76e60a6"
+  },
+  "name": "United States, Canada"
+},{
+  "_id": {
+    "$oid": "635a8d54a67357eef76e60a7"
+  },
+  "name": "Germany, USA"
+},{
+  "_id": {
+    "$oid": "635a8d55a67357eef76e60a8"
+  },
+  "name": "Canada, United Kingdom, United States"
+},{
+  "_id": {
+    "$oid": "635a8d58a67357eef76e60a9"
+  },
+  "name": "Russia, USA"
+},{
+  "_id": {
+    "$oid": "635a8d5aa67357eef76e60aa"
+  },
+  "name": "Australia, New Zealand"
+},{
+  "_id": {
+    "$oid": "635a8d5ca67357eef76e60ab"
+  },
+  "name": "France, Spain"
+},{
+  "_id": {
+    "$oid": "635a8d5ca67357eef76e60ac"
+  },
+  "name": "Sweden, Denmark"
+},{
+  "_id": {
+    "$oid": "635a8d5fa67357eef76e60ad"
+  },
+  "name": "United Kingdom, United States"
+},{
+  "_id": {
+    "$oid": "635a8d61a67357eef76e60ae"
+  },
+  "name": "Sweden, United States"
+},{
+  "_id": {
+    "$oid": "635a8d64a67357eef76e60af"
+  },
+  "name": "Italy, United States"
+},{
+  "_id": {
+    "$oid": "635a8d64a67357eef76e60b0"
+  },
+  "name": "Korea"
+},{
+  "_id": {
+    "$oid": "635a8d65a67357eef76e60b1"
+  },
+  "name": "Netherlands, United Kingdom"
+},{
+  "_id": {
+    "$oid": "635a8d65a67357eef76e60b2"
+  },
+  "name": "Brazil, Portugal"
+},{
+  "_id": {
+    "$oid": "635a8d66a67357eef76e60b3"
+  },
+  "name": "Canada, United States"
+},{
+  "_id": {
+    "$oid": "635a8d66a67357eef76e60b4"
+  },
+  "name": "Austria, Hungary, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d66a67357eef76e60b5"
+  },
+  "name": "Soviet Union, France"
+},{
+  "_id": {
+    "$oid": "635a8d67a67357eef76e60b6"
+  },
+  "name": "United Kingdom, Netherlands"
+},{
+  "_id": {
+    "$oid": "635a8d68a67357eef76e60b7"
+  },
+  "name": "United States, Italy"
+},{
+  "_id": {
+    "$oid": "635a8d68a67357eef76e60b8"
+  },
+  "name": "Australia, United States"
+},{
+  "_id": {
+    "$oid": "635a8d69a67357eef76e60b9"
+  },
+  "name": "Austria, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d69a67357eef76e60ba"
+  },
+  "name": "UK, USA"
+},{
+  "_id": {
+    "$oid": "635a8d69a67357eef76e60bb"
+  },
+  "name": "Georgia"
+},{
+  "_id": {
+    "$oid": "635a8d69a67357eef76e60bc"
+  },
+  "name": "Canada, USA"
+},{
+  "_id": {
+    "$oid": "635a8d6aa67357eef76e60bd"
+  },
+  "name": "Netherlands, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d6ba67357eef76e60be"
+  },
+  "name": "Peru"
+},{
+  "_id": {
+    "$oid": "635a8d6ba67357eef76e60bf"
+  },
+  "name": "Germany, Hungary"
+},{
+  "_id": {
+    "$oid": "635a8d6ba67357eef76e60c0"
+  },
+  "name": "Germany, Switzerland"
+},{
+  "_id": {
+    "$oid": "635a8d6ba67357eef76e60c1"
+  },
+  "name": "Soviet Union"
+},{
+  "_id": {
+    "$oid": "635a8d6ba67357eef76e60c2"
+  },
+  "name": "Netherlands, UK"
+},{
+  "_id": {
+    "$oid": "635a8d6ca67357eef76e60c3"
+  },
+  "name": "Germany, Italy"
+},{
+  "_id": {
+    "$oid": "635a8d6ca67357eef76e60c4"
+  },
+  "name": "Argentina, USA"
+},{
+  "_id": {
+    "$oid": "635a8d6ca67357eef76e60c5"
+  },
+  "name": "France, Germany, Switzerland"
+},{
+  "_id": {
+    "$oid": "635a8d6ca67357eef76e60c6"
+  },
+  "name": "France, United Kingdom"
+},{
+  "_id": {
+    "$oid": "635a8d6da67357eef76e60c7"
+  },
+  "name": "China"
+},{
+  "_id": {
+    "$oid": "635a8d6ea67357eef76e60c8"
+  },
+  "name": "Germany, Netherlands"
+},{
+  "_id": {
+    "$oid": "635a8d6ea67357eef76e60c9"
+  },
+  "name": "Portugal, Spain"
+},{
+  "_id": {
+    "$oid": "635a8d6ea67357eef76e60ca"
+  },
+  "name": "United States, Siam"
+},{
+  "_id": {
+    "$oid": "635a8d6ea67357eef76e60cb"
+  },
+  "name": "Portugal, France"
+},{
+  "_id": {
+    "$oid": "635a8d6fa67357eef76e60cc"
+  },
+  "name": "United States, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d6fa67357eef76e60cd"
+  },
+  "name": "Italy, USA"
+},{
+  "_id": {
+    "$oid": "635a8d6fa67357eef76e60ce"
+  },
+  "name": "Switzerland, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d70a67357eef76e60cf"
+  },
+  "name": "United Kingdom, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d71a67357eef76e60d0"
+  },
+  "name": "France, Switzerland"
+},{
+  "_id": {
+    "$oid": "635a8d71a67357eef76e60d1"
+  },
+  "name": "Italy, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d71a67357eef76e60d2"
+  },
+  "name": "Austria, United Kingdom"
+},{
+  "_id": {
+    "$oid": "635a8d71a67357eef76e60d3"
+  },
+  "name": "Austria, Poland"
+},{
+  "_id": {
+    "$oid": "635a8d72a67357eef76e60d4"
+  },
+  "name": "New Zealand, United States"
+},{
+  "_id": {
+    "$oid": "635a8d72a67357eef76e60d5"
+  },
+  "name": "Austria, France"
+},{
+  "_id": {
+    "$oid": "635a8d73a67357eef76e60d6"
+  },
+  "name": "Norway, Sweden"
+},{
+  "_id": {
+    "$oid": "635a8d73a67357eef76e60d7"
+  },
+  "name": "Chile"
+},{
+  "_id": {
+    "$oid": "635a8d74a67357eef76e60d8"
+  },
+  "name": "India, Germany"
+},{
+  "_id": {
+    "$oid": "635a8d74a67357eef76e60d9"
+  },
+  "name": "Germany, France, Austria"
+},{
+  "_id": {
+    "$oid": "635a8d74a67357eef76e60da"
+  },
+  "name": "Switzerland, France"
+},{
+  "_id": {
+    "$oid": "635a8d74a67357eef76e60db"
+  },
+  "name": "Germany, France"
+},{
+  "_id": {
+    "$oid": "635a8d74a67357eef76e60dc"
+  },
+  "name": "Germany, United States"
+}]

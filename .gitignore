@@ -1,4 +1,5 @@
 __pycache__/
+backup/
 titleId.tsv
 data.tsv
 names.tsv
